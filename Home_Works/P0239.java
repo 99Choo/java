@@ -1,70 +1,69 @@
-// P0239.java
-package Home_Work; // 이 패키지가 실제로 존재하는지 확인 또는 삭제
+패키지 홈Work; // 이 패키지가 실제로 존재하는지 확인 또는 삭제
 
-import java.util.Scanner;
+java.util 가져오기.스캐너;
 
-class Player { 
-    private String name;
+학급 플레이어1 { 
+ 개인 문자열 이름;
 
-    public Player(String name) {
-        this.name = name;
+ 공개 플레이어1( 문자열 이름) {
+ this.name = 이름;
     }
 
-    public String getName() {
-        return name;
+ 공용 문자열 getName() {
+ 이름 반환;
     }
 
-    public String getWordFromUser(Scanner scanner) {
-        System.out.print(name + ">>");
-        return scanner.next();
+ 공용 문자열 getWordFromUser(스캐너 스캐너) {
+ System.out.print(이름 + ">>");
+ 스캐너를 반환합니다.다음 ();
     }
 }
 
-public class P0239 {
-    private Player[] players;
-    private String startWord = "아버지";
-    private Scanner scanner;
+일반의 학급 P0239 {
+ 개인 플레이어1[] 플레이어;
+ 개인 문자열 시작 단어 = "아버지";
+ 개인 스캐너 스캐너;
 
-    public P0239() {
-        scanner = new Scanner(System.in);
+    일반의 P0239() {
+ 스캐너 = 새 스캐너(System.in );
     }
 
-    public void run() {
-        System.out.println("끝말잇기 게임을 시작합니다...");
-        System.out.print("게임에 참가하는 인원은 몇명입니까>>");
-        int numPlayers = scanner.nextInt();
-        players = new Player[numPlayers];
+    일반의 공백 달려.() {
+ System.out.println("끝말잇기 게임을 시작합니다...");
+ System.out.print("게임에 참가하는 인원은 몇명입니까>>");
+ int numPlayers = scanner.nextInt();
+ 플레이어 = 신규 플레이어1[numPlayers];
 
-        for (int i = 0; i < numPlayers; i++) {
-            System.out.print("참가자의 이름을 입력하세요>>");
-            String name = scanner.next();
-            players[i] = new Player(name);
+ (int i = 0; i < numPlayers; i++) {의 경우
+ System.out.print("참가자의 이름을 입력하세요>>");
+ 문자열 이름 = 스캐너.next ();
+ player[i] = 새로운 Player1(이름);
         }
 
-        System.out.println("시작하는 단어는 " + startWord + "입니다.");
-        String currentWord = startWord;
+ System.out.println("시작하는 단어는" + startWord + "입니다.");
+ 문자열 현재 단어 = startWord;
 
-        while (true) {
-            for (Player player : players) {
-                String newWord = player.getWordFromUser(scanner);
-                if (!checkSuccess(currentWord, newWord)) {
-                    System.out.println(player.getName() + "이 졌습니다.");
-                    return;
+        하는 동안에 (진실의) {
+ (Player1 플레이어 : 플레이어) {
+ 문자열 newWord = player.getWordFromUser(스캐너);
+ if (!checkSuccess(현재 Word, 새 Word)) {
+ System.out.println(player.getName() + "이 졌습니다.");
+ 반환;
                 }
-                currentWord = newWord;
+ 현재 Word = newWord;
             }
         }
     }
 
-    private boolean checkSuccess(String currentWord, String newWord) {
-        int lastIndex = currentWord.length() - 1;
-        char lastChar = currentWord.charAt(lastIndex);
-        char firstChar = newWord.charAt(0);
-        return lastChar == firstChar;
+ 개인 부울 체크Success(현재 단어 문자열, 새 단어 문자열) {
+ 마지막으로인덱스 = currentWord.length() - 1;
+ char lastChar = currentWord.charAt(라스트인덱스);
+ char firstChar = newWord.charAt(0);
+ lastChar == firstChar를 반환합니다;
     }
 
-    public static void main(String[] args) {
-        P0239 game = new P0239();
-        game.run();
+ 공용 정적 보이드 메인(String[] args) {
+ P0239 game = new P0239();
+ game.run ();
     }
 }
